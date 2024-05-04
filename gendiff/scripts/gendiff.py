@@ -23,9 +23,8 @@ def generate_diff(file1, file2):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=
-                                     'Compares two configuration files '
-                                     'and shows a difference.')
+    parser = argparse.ArgumentParser(
+        description='Compares two configuration files and shows a difference.')
     parser.add_argument('first file')
     parser.add_argument('second file')
     parser.add_argument('-f', "--format", help="set format of output")
