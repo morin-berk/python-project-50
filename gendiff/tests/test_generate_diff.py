@@ -1,11 +1,15 @@
-from scripts import generate_diff
+from gendiff import generate_diff
 import pytest
+import os
 
 
 @pytest.fixture
 def data_positive():
     file1, file2 = "fixtures/file1.json", "fixtures/file2.json"
+    # file1_path, file2_path = os.path.abspath(file1), os.path.abspath(file2)
+    # return file1_path, file2_path
     return file1, file2
+
 
 
 @pytest.fixture
@@ -21,7 +25,9 @@ def data_different_files():
 
 
 def test_positive(data_positive):
-    result = open("fixtures/result_positive.txt")
+    # result_path = os.path.abspath("tests/fixtures/result_positive.txt")
+    # result = open(result_path)
+    result = open("tests/fixtures/result_positive.txt")
     file1, file2 = data_positive
     assert generate_diff(file1, file2) == result.read()
 
