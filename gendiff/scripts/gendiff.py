@@ -1,12 +1,10 @@
 import argparse
-import json
-import os
+from .parcer import parse_file
 
 
 def generate_diff(file1, file2):
     result = "{\n"
-    file1_path, file2_path = os.path.abspath(file1), os.path.abspath(file2)
-    dict1, dict2 = json.load(open(file1_path)), json.load(open(file2_path))
+    dict1, dict2 = parse_file(file1), parse_file(file2)
     united_dict = dict(sorted({**dict1, **dict2}.items()))
     for key in united_dict.keys():
         if key in dict1 and key in dict2 and dict1[key] == dict2[key]:
